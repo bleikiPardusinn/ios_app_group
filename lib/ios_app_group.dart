@@ -17,12 +17,12 @@ class IosAppGroup {
   ///
   /// On Android, this function throws an [UnsupportedError].
   ///
-  static Future<Directory> getAppGroupDirectory(String groupId) async {
+  static Future<Directory?> getAppGroupDirectory(String groupId) async {
     if (!Platform.isIOS) {
       throw UnsupportedError("getAppGroupDirectory requires iOS");
     }
 
-    final String path =
+    final String? path =
         await _channel.invokeMethod<String>('getAppGroupDirectory', groupId);
     if (path == null) {
       return null;
